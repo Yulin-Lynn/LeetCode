@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+
+</head>
+
+<body>
+  <p id="demo">XML HttpRequest对象</p>
+  <button type="button" onclick="loadDoc()">修改内容</button>
+
+
+  <script>
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("demo").innerHTML = this.responseText;
+        } else if (this.readyState == 0) {
+          return "请求未初始化";
+        } else if (this.readyState == 1) {
+          return "服务器连接已建立";
+        } else if (this.readyState == 2) {
+          return "请求已收到";
+        } else if (this.readyState == 3) {
+          return "正在处理请求";
+        }
+      };
+      xhttp.open("POST", "ajax_info.txt", true);
+      xhttp.send("hello");
+    }
+
+  </script>
+
+</body>
+
+</html>
